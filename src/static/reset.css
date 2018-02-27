@@ -1,0 +1,112 @@
+body{ 
+    margin: 0; 
+    line-height: 1.42857143; 
+    color: #333; 
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
+    background-color: #f4f5f5;
+}
+
+h1 {
+    word-wrap: break-word;
+}
+
+a{ 
+    text-decoration: none; 
+    color: #000;  
+    word-break: break-all;
+    font-size: 14px;
+}
+
+p {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+}
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+
+
+/* markdow-text */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+p {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    
+}
+
+pre {
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #333;
+    line-height: 1.42857143;
+    word-wrap: break-word;
+    word-break: break-all;
+}   
+
+code, textarea, input {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    white-space: pre-wrap;  
+}
+
+blockquote {
+    padding: 0 0 0 15px;
+    margin: 0;
+    border-left: 5px solid #ccc;
+}
+
+.markdown-text ul {
+    padding: 0;
+    margin: 0 0 10px 25px;
+}
+
+.markdown-text li, .markdown-text p {
+    line-height: 1.7em;
+}
+
+.msg-content .markdown-text p {
+    margin: 0;
+    font-size: 13px;
+}
+
+.loading {
+    margin-top: 100px;
+}
+
+.user-loading {
+    height: 100px;
+}
+
+
+/* 修改element ui默认样式 */
+.tabs .el-tabs__nav-wrap::after {
+    background-color: #fff;
+}
+
+@media (min-width: 768px) {
+    .container .el-dialog {
+        width: 30%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container .el-dialog {
+        width: 90%;
+    }
+}
+
+

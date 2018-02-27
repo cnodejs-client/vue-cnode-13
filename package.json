@@ -1,0 +1,42 @@
+{
+  "name": "vue-cnode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "set NODE_DEV=production&& webpack --progress",
+    "dev": "set NODE_DEV=dev&& webpack-dev-server --progress --inline"
+  },
+  "author": "lhmmhs",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-component": "^1.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "html-webpack-plugin": "^2.30.1",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "open-browser-webpack-plugin": "0.0.5",
+    "style-loader": "^0.19.1",
+    "uglifyjs-webpack-plugin": "^1.1.6",
+    "vue-loader": "^13.6.2",
+    "vue-style-loader": "^3.0.3",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "element-ui": "^2.0.10",
+    "font-awesome": "^4.7.0",
+    "vue": "^2.5.13",
+    "vue-router": "^2.8.0",
+    "vue-template-compiler": "^2.5.13",
+    "vuex": "^3.0.1"
+  }
+}
