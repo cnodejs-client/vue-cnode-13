@@ -51,7 +51,7 @@ const routes = [
     }
 ]
 
-const mode = process.NODE_ENV !== 'production' ? 'history' : ''
+const mode = process.NODE_ENV !== 'production' ? 'history' : 'hash'
 
 const router = new VueRouter({
     mode,
