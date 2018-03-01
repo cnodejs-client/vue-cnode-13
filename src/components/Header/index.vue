@@ -5,7 +5,7 @@
             <ul class="nav">
                 <li><router-link to="/">首页</router-link></li>
                 <li v-if="!accesstoken"><router-link to="/login">登陆</router-link></li>
-                <li v-else class="avatar"><router-link to="/message"><img :src=" user.avatar_url "></router-link></li>
+                <li v-else><router-link to="/message">消息</router-link></li>
                 <li><router-link to="/about">关于</router-link></li>
             </ul>
         </div>
@@ -15,11 +15,7 @@
 
                     <li><router-link to="/">首页</router-link></li>
                     <li v-if="!accesstoken"><router-link to="/login">登陆</router-link></li>
-                    <li v-else class="avatar">
-                        <router-link to="/message">
-                            <img :src=" user.avatar_url ">
-                        </router-link>
-                    </li>
+                    <li v-else><router-link to="/message">消息</router-link></li>
                     <li><router-link to="/about">关于</router-link></li>
                 </ul>
             </div>
@@ -74,11 +70,11 @@
     }
 
     .sidebar-leave-active, .sidebar-enter-active {
-        transition: transform .5s; 
+        transition: transform .3s; 
     }
 
     .sidebar{
-        width: 200px;
+        width: 150px;
         height: 100%;
         position: fixed;
         top: 0;

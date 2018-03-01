@@ -31,7 +31,7 @@
         },
         methods: {
             showHideSideBar() {
-                this.$store.state.sideBarOnOff && this.$store.commit('showHideSideBar')
+                this.$store.state.sideBarSwitch && this.$store.commit('showHideSideBar')
             },
             ...mapActions('user', [
                 'getAccessToken'

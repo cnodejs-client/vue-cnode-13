@@ -17,14 +17,22 @@
                                 <div class="item-meta">
                                     <span class="tab">{{ item.top ? '置顶' : tab(item) }}</span>
                                     <span class="loginname">
-                                        <router-link :to=" 'user/' + item.author.loginname ">{{ item.author.loginname }}</router-link>
+                                        <router-link :to=" 'user/' + item.author.loginname ">
+                                            {{ item.author.loginname }}
+                                        </router-link>
                                     </span>
                                     <span class="last-reply-at">{{ format( item.last_reply_at ) }}</span>
                                 </div>
                                 <div class="item-title">{{ item.title }}</div>
                                 <div class="item-action">
-                                    <el-button size="mini" icon="el-icon-message">{{ k( item.reply_count ) }}</el-button>
-                                    <el-button size="mini" icon="el-icon-view">{{ k( item.visit_count ) }}</el-button>
+                                    <span>
+                                        <i class="el-icon-message"></i>
+                                        <span>{{ k( item.reply_count ) }}</span>
+                                    </span>
+                                    <span>
+                                        <i class="el-icon-view"></i>
+                                        <span>{{ k( item.reply_count ) }}</span>
+                                    </span>
                                 </div>
                             </div>
                         </router-link>
@@ -81,9 +89,6 @@
             ])
         },
         methods: {
-            alert() {
-                alert('ceshi')
-            },
             showHideSideBar() {
                 this.$store.state.sideBarSwitch && this.$store.commit('showHideSideBar')
             },
@@ -93,11 +98,9 @@
             ...mapActions('topics', [
                 'getData'
             ]),
-            // 格式化
             format(str) {
                 return util.format(str)
             },
-            // 转化tab
             tab( { tab, good } ) {
                 let obj = {
                     share: '分享',
@@ -119,23 +122,17 @@
                     type: 'getNextPageData'
                 })
             }
-
         },
-        // 生命周期
         created() {
-            // 判断vuex中的数据是否存在
-            // console.log(this.$router.history.current.query.tab)
-            
             let category = this.$router.history.current.query.tab || 'all'
             this.data[category] === undefined && this.getData( { tab: category, page: 1, type: 'getData' } )
         },
-        // 路由导航
         beforeRouteUpdate(to, from, next) {
             // 判断vuex中的数据是否存在
             this.data[to.query.tab] === undefined 
             ? this.getData( { tab: to.query.tab, page: 1, type: 'getData' } ) 
             : this.selectCategory(to.query.tab)
-            next() // 坑 不写此方法路由地址不会变化
+            next()
         }
         
         
@@ -143,8 +140,6 @@
 </script>
 
 <style scoped lang="less">
-
-    
 
     ul {
         padding: 0;
@@ -180,7 +175,6 @@
                     transition-duration: .1s;
                 }
 
-
                 .router-link-exact-active {
                     color: #409eff;
                 }
@@ -200,14 +194,29 @@
         
         .item-meta {
             font-size: 13px;
+
+            >span {
+                margin: 0 2px;
+                color: #999;
+
+                >a {
+                    color: #999;
+                }
+            }
         }
 
         .item-title {
             margin: 8px 0 6px 0;
+            font-weight: 600;
         }
 
         .item-action {
-            font-size: 14px;
+            font-size: 13px;
+            color: #999;
+
+            >span {
+                margin: 0 4px;
+            }
         }
     }
 

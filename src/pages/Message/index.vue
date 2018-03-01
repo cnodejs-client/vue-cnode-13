@@ -6,31 +6,37 @@
                 <div class="title" v-if=" message.has_read_messages.length ">已读消息</div>
                 <ul>
                     <li v-for=" item in message.has_read_messages " :key=" item.id ">
-                        <div class="li-box">
-                            <router-link :to=' "/user/" + item.author.loginname '>
-                                <div class="avatar"><img :src=" item.author.avatar_url "></div>
-                            </router-link> 
-                            <div class="con">
+                        <router-link :to=" 'topic/' + item.topic.id ">
+                            <div class="li-box">
                                 <router-link :to=' "/user/" + item.author.loginname '>
-                                    <div class="name">{{ item.author.loginname }}</div>
-                                </router-link>
-                                <div class="msg-content" v-html=" item.reply.content "></div>
-                                <div class="creat-at">回复于{{ format ( item.create_at ) }}</div>
+                                    <div class="avatar"><img :src=" item.author.avatar_url "></div>
+                                </router-link> 
+                                <div class="con">
+                                    <router-link :to=' "/user/" + item.author.loginname '>
+                                        <div class="name">{{ item.author.loginname }}</div>
+                                    </router-link>
+                                    <div class="msg-content" v-html=" item.reply.content "></div>
+                                    <div class="creat-at">回复于{{ format ( item.create_at ) }}</div>
+                                </div>
                             </div>
-                        </div>
+                        </router-link>
                     </li>
                 </ul>
                 <div class="title" v-if="message.hasnot_read_messages.length">未读消息</div>
                 <ul>
                     <li v-for=" item in message.hasnot_read_messages " :key=" item.id ">
-                        <div class="li-box">
-                            <div class="avatar"><img :src=" item.author.avatar_url "></div>
-                            <div class="con">
-                                <div class="name">{{ item.author.loginname }}</div>
-                                <div class="msg-content" v-html=" item.reply.content "></div>
-                                <div class="creat-at">回复于{{ format ( item.create_at ) }}</div>
+                        <router-link :to=" 'topic/' + item.topic.id ">
+                            <div class="li-box">
+                                <router-link :to=' "/user/" + item.author.loginname '>
+                                    <div class="avatar"><img :src=" item.author.avatar_url "></div>
+                                </router-link> 
+                                <div class="con">
+                                    <div class="name">{{ item.author.loginname }}</div>
+                                    <div class="msg-content" v-html=" item.reply.content "></div>
+                                    <div class="creat-at">回复于{{ format ( item.create_at ) }}</div>
+                                </div>
                             </div>
-                        </div>
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -76,20 +82,25 @@
     ul {
         margin: 0;
         padding: 0;
+
+        li {
+            padding: 0 15px;
+            list-style: none;
+            background-color: #fff;
+            border-top: 1px solid #fafafa;
+        }
+
+        li:hover {
+            background-color: #fafafa;
+            transition-duration: .3s;
+        }
     }
 
-    li {
-        
-        list-style: none;
-        
-        background-color: #fff;
-    }
+    
 
     .li-box {
-        border-top: 1px solid  rgba(178,186,194,.15);
         padding: 15px 0;
         display: flex;
-        margin: 0 15px;
     }
 
     .title {
@@ -103,13 +114,12 @@
     }
 
     .avatar {
-        width: 48px;
-        height: 48px;
+        width: 38px;
+        height: 38px;
         margin-right: 15px;
         
         img {
-            width: 48px;
-            height: 48px;
+            width: 100%;
             border-radius: 3px;
         }
 

@@ -33,7 +33,6 @@ const actions = {
     // 请求数据
     getData( { commit, state, rootState }, { tab, page, type } ) {
         commit('request', type)
-        console.log(api)
         axios.get( api + '/api/v1/topics', {
             params: {
                 limit: 15, // 每次请求15条数据

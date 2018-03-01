@@ -51,25 +51,25 @@ const routes = [
     }
 ]
 
-
+const mode = process.NODE_ENV !== 'production' ? 'history' : ''
 
 const router = new VueRouter({
+    mode,
     routes
 })
 
 
-router.beforeEach((to, from, next) => {
-    let accesstoken = util.getLocalStorage( 'accesstoken' )
-    if ( accesstoken ) {
-        router.app.$options.store.commit('user/setAccesstokenAndUser', { accesstoken, user: JSON.parse(util.getLocalStorage('user')) })
-    } 
-    // if ( util.getLocalSorage )
-    // 进入新路由 判断侧边栏是否显示,显示隐藏反之显示
-    router.app.$options.store.state.sideBarSwitch && router.app.$options.store.commit('showHideSideBar')
+router.beforeEach(({ path }, from, next) => {
+    let $store = router.app.$options.store
+    let accesstoken = util.getLocalStorage('accesstoken')
+    let user =  JSON.parse(util.getLocalStorage('user'))
+    if ( !accesstoken && path === '/message' ) {
+        return next('/login')
+    } else {
+        $store.commit('user/setAccesstokenAndUser', { accesstoken, user })
+    }
+    $store.state.sideBarSwitch && $store.commit('showHideSideBar')
     next()
-})
-
-router.afterEach((to, from) => {
 })
 
 export default router

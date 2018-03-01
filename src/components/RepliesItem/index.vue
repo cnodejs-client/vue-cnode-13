@@ -13,7 +13,9 @@
         </div>
         <div class="replies-main " v-html=" item.content "></div>
         <div class="replies-bar">
-            <el-button :class=" [ is_uped ? uped : up ] " size="mini" icon="el-icon-caret-top" @click=" thumb ">{{ len }}</el-button>
+            <el-button :class=" [ is_uped ? uped : up ] " size="mini" icon="el-icon-caret-top" @click=" thumb ">
+                {{ len }}
+            </el-button>
             <el-button size="mini" @click=" showComment " icon="el-icon-message"></el-button>
         </div>
         <transition name="down">  
@@ -43,9 +45,9 @@
                 timer: null, //定时器
                 is_uped: false, // 判断评论是否点赞
                 commentSwitch: false, // 评论中的回复框显示的状态值
-                value: '',
-                uped: 'uped',
-                up: 'up'
+                value: '',  
+                uped: 'uped', 
+                up: 'up' 
             }
         },
         computed: {
@@ -80,8 +82,6 @@
                     return false
                 }
                 this.is_uped = !this.is_uped
-                // true => next
-                // false => prev
                 this.len = this.is_uped ? this.next : this.prev
                 clearTimeout(this.timer)
                 this.timer = setTimeout(this.request_thumb, 500)
@@ -93,7 +93,6 @@
                 })
                 .then( () => {
                     this.init_len = this.len
-                    console.log('成功')
                 } )
                 .catch( () => this.$message.error('网络超时') )
             },
@@ -103,9 +102,8 @@
                         type: 'warning',
                         message: '内容不能为空'
                     })
-                    return false
+                    return
                 }
-                
                 axios.post( api + '/api/v1/topic/' + this.topicId + '/replies', {
                     accesstoken: this.accesstoken,
                     content: this.value,
@@ -134,7 +132,7 @@
                         type: 'warning',
                         showClose: 'true'
                     })
-                    return false
+                    return
                 } 
                 this.commentSwitch = true
             }
@@ -147,7 +145,6 @@
             this.is_uped = this.item.is_uped
             this.value = '@' + this.item.author.loginname + ' '
         }
-
     }
 </script>
 
@@ -219,7 +216,6 @@
         background-color: #f8f9fa;
         border: 1px solid #f1f1f1;
         border-radius: 4px;
-
         
         textarea {
             display: block;

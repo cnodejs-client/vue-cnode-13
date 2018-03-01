@@ -15,8 +15,7 @@ const mutations = {
         state.isLoading = false
         state.data = topic
         state.replies = topic.replies
-        console.log(state)
-    },
+    },  
     addReplies( state, repliesItem ) {
         state.replies = state.replies.concat(repliesItem)
     }

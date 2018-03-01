@@ -170,7 +170,6 @@
         padding: 0 0 10px 0;
     }
 
-
     .topic{
         margin-top: 70px;
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="container warpper">
+    <div class="container warpper" @click="showHideSideBar" >
         <div class="user">
             <div v-if="loading" v-loading="true" class="loading"></div>
             <div v-else>
@@ -86,6 +86,9 @@
             ])
         },
         methods: {
+            showHideSideBar() {
+                this.$store.state.sideBarSwitch && this.$store.commit('showHideSideBar')
+            },
             format ( str ) {
                 return util.format( str )
             },
