@@ -10,15 +10,20 @@ let publicPath = '/'; // 服务器资源指定路径
 plugins.push(new ExtractTextPlugin('css/[name].[contenthash:8].css')); // 指定抽离的css文件名
 
 let htmlPlugin = {
-    template: './index.html' // 本地模板文件的位置
+    template: './index.html', // 本地模板文件的位置
+    favicon: './src/static/images/cnode_icon.png'
 }
 
 // 生产环境
 if(process.env.NODE_DEV === 'production') {
+    plugins.push(new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }))
     path = __dirname + '/vue-cnode/dist/'
     publicPath = '/vue-cnode/dist/'
     htmlPlugin = Object.assign({}, htmlPlugin, {filename: '../index.html'})
-
     plugins.push(new webpack.optimize.UglifyJsPlugin({ // 压缩文件
         compress: {
             warnings: false // 删除警告
@@ -79,20 +84,10 @@ module.exports = {
         ]
     },
     plugins,
-    devServer: {
-        // 代理
-        proxy: {
-            "/api/*": {
-                target: "https://cnodejs.org",
-                secure: false
-            }
-        },
-        inline: true
-    },
     resolve: {
         extensions: ['.js', '.vue'], //后缀名自动补全
         alias: {
-            'vue': 'vue/dist/vue.js'
+            'vue$': 'vue/dist/vue.esm.js'
         }
     }
 }

@@ -2,13 +2,12 @@ import VueRouter from 'vue-router'
 import Vue from 'vue'
 
 import App from '../App'
-import Topics from '../pages/Topics'
-import User from '../pages/User'
-import Topic from '../pages/Topic'
-import About from '../pages/About'
-import Login from '../pages/Login'
-import Message from '../pages/Message'
-import Header from '../components/Header'
+// import Topics from '../pages/Topics'
+// import User from '../pages/User'
+// import Topic from '../pages/Topic'
+// import About from '../pages/About'
+// import Login from '../pages/Login'
+// import Message from '../pages/Message'
 
 import util from '../util'
 
@@ -21,43 +20,42 @@ const routes = [
         children: [
             {
                 path: '/',
-                component: Topics,
+                component: () => import('../pages/Topics'),
                 name: 'topics'
             },
             {
                 path: '/user/:loginname',
-                component: User,
+                component: () => import('../pages/User'),
                 name: 'user',
                 props: true
             },
             {
                 path: '/topic/:id',
-                component: Topic,
+                component: () => import('../pages/Topic'),
                 props: true 
             },
             {
                 path: '/about',
-                component: About
+                component: () => import('../pages/About')
             },
             {
                 path: '/login',
-                component: Login
+                component: () => import('../pages/Login')
             },
             {
                 path: '/message',
-                component: Message
+                component: () => import('../pages/Message')
             }
         ]
     }
 ]
 
-const mode = process.NODE_ENV !== 'production' ? 'history' : 'hash'
+const mode = process.env.NODE_ENV === 'production' ? 'hash' : 'history'
 
 const router = new VueRouter({
     mode,
     routes
 })
-
 
 router.beforeEach(({ path }, from, next) => {
     let $store = router.app.$options.store

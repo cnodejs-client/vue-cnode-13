@@ -28,7 +28,6 @@ const mutations = {
             has_read_messages: has_read_messages, 
             hasnot_read_messages: hasnot_read_messages 
         }
-        console.log(has_read_messages)
     },
     setAccesstokenAndUser( state, { accesstoken, user } ) {
         state.accesstoken = accesstoken,

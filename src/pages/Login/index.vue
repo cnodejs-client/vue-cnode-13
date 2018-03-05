@@ -20,7 +20,7 @@
     export default {
         data() {
             return {
-                value: 'f326b5c5-bb25-43e8-b46a-b8af5c47e4ab'
+                value: ''
             }
         },
         computed: {

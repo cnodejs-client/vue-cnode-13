@@ -1,6 +1,6 @@
 <template>
     <div class="home container">
-        <div class="topics" >
+        <div class="topics" >   
             <div class="tabs" @click="showHideSideBar">
                 <ul>
                     <li v-for=" tab in tabs " :key=" tab.tab ">
@@ -170,11 +170,6 @@
             li {
                 margin: 0 10px;
                 
-                a:hover {
-                    color: #409eff;
-                    transition-duration: .1s;
-                }
-
                 .router-link-exact-active {
                     color: #409eff;
                 }
