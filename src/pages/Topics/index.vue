@@ -206,11 +206,23 @@
         }
 
         .item-action {
-            font-size: 14x;
-            color: #41b883;
+            font-size: 14px;
 
             >span {
-                margin: 0 4px;
+                padding: 7px 15px;
+                display: inline-block;
+                font-size: 12px;
+                border-radius: 3px;
+                background-color: #fff;
+                box-sizing: border-box;
+                white-space: nowrap;
+                border: 1px solid #dcdfe6;
+                color: #606266;
+                line-height: 1;
+            }
+
+            >span:last-child {
+                margin-left: 10px;
             }
         }
     }

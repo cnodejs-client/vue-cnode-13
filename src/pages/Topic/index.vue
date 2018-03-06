@@ -71,7 +71,8 @@
                 'replies'
             ]),
             ...mapState('user', [
-                'accesstoken'
+                'accesstoken',
+                'user'
             ])
         },
         methods: {
@@ -125,7 +126,7 @@
                     })
                     return false
                 }
-
+                console.log(this.user)
                 axios.post( api + '/api/v1/topic/' + this.id + '/replies', {
                     accesstoken: this.accesstoken,
                     content: this.value
@@ -133,8 +134,8 @@
                 .then( () => {
                     this.addReplies({
                         author:{
-                            avatar_url: this.data.author.avatar_url,
-                            loginname: this.data.author.loginname
+                            avatar_url: this.user.avatar_url,
+                            loginname: this.user.loginname
                         },
                         content: this.value,
                         create_at: new Date(),
@@ -261,7 +262,6 @@
     }
 
     .collect-warpper {
-
         cursor: pointer;
 
         .heart {

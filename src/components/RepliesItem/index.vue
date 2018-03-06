@@ -179,7 +179,7 @@
         .uped {
             color: #3a8ee6;
             background-color: #ecf5ff;
-            border-color: #c6e2ff;
+            border-color: #ecf5ff;
         }
 
         .up {

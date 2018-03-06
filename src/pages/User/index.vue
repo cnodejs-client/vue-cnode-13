@@ -48,8 +48,14 @@
                                 </div>
                                 <div class="title">{{ item.title }}</div>
                                 <div class="item-action">
-                                    <el-button size="mini" icon="el-icon-message">{{ k( item.reply_count ) }}</el-button>
-                                    <el-button size="mini" icon="el-icon-view">{{ k( item.visit_count ) }}</el-button>
+                                     <span>
+                                        <i class="el-icon-message"></i>
+                                        <span>{{ k( item.reply_count ) }}</span>
+                                    </span>
+                                    <span>
+                                        <i class="el-icon-view"></i>
+                                        <span>{{ k( item.reply_count ) }}</span>
+                                    </span>
                                 </div>
                             </router-link>
                         </div>
@@ -192,6 +198,28 @@
 
         .title {
             margin-top: 8px;
+        }
+    }
+
+    .item-action {
+        font-size: 14px;
+
+        >span {
+            padding: 7px 15px;
+            display: inline-block;
+            font-size: 12px;
+            border-radius: 3px;
+            background-color: #fff;
+            box-sizing: border-box;
+            white-space: nowrap;
+            border: 1px solid #dcdfe6;
+            color: #606266;
+            line-height: 1;
+            text-align: center;
+        }
+
+        >span:last-child {
+            margin-left: 10px;
         }
     }
     
