@@ -8,7 +8,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="loading" v-if="isLoading" v-loading="true"></div>
+            <div class="loading" v-if="isLoading"></div>
             <div class="list" v-else>
                 <ul>
                     <li class="item" v-for="item in data[category].data">
@@ -171,7 +171,7 @@
                 margin: 0 10px;
                 
                 .router-link-exact-active {
-                    color: #409eff;
+                    color: #41b883;
                 }
             }
         }
@@ -201,13 +201,13 @@
         }
 
         .item-title {
-            margin: 8px 0 6px 0;
+            margin: 10px 0;
             font-weight: 600;
         }
 
         .item-action {
-            font-size: 13px;
-            color: #999;
+            font-size: 14x;
+            color: #41b883;
 
             >span {
                 margin: 0 4px;

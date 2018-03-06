@@ -35,12 +35,14 @@ if(process.env.NODE_DEV === 'production') {
     }))
 }
 
-plugins.push(new HtmlWebpackPlugin( htmlPlugin ));
+plugins.push(new HtmlWebpackPlugin( htmlPlugin ))
+plugins.push(new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}))
 
 
 module.exports = {
     entry: {
-        app: './src/index.js' // 入口文件
+        app: './src/index.js', // 入口文件
+        vendor: [ 'vue', 'vue-router', 'vuex', 'axios', 'vue-template-compiler' ]
     },  
     output: {
         path,

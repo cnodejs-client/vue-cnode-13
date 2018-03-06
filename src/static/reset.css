@@ -17,8 +17,17 @@ a{
     font-size: 14px;
 }
 
+.replies-main a {
+    color: #41b883;
+
+}
+
 .markdown-text a {
-    color: #409eff;
+    color: #41b883;
+}
+
+.markdown-text a:hover {
+    text-decoration: underline;
 }
 
 .markdown-text li {

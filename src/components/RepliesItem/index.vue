@@ -73,13 +73,13 @@
                         type: 'warning',
                         showClose: 'true'
                     })
-                    return false
+                    return
                 } else if ( this.item.author.loginname === this.user.loginname ) {
                     this.$message({
                         type: 'warning',
                         message: '你不能给自己点赞'
                     })
-                    return false
+                    return
                 }
                 this.is_uped = !this.is_uped
                 this.len = this.is_uped ? this.next : this.prev
@@ -97,7 +97,7 @@
                 .catch( () => this.$message.error('网络超时') )
             },
             reply() {
-                if( this.value === '' ) {
+                if( this.value.split(' ')[1] === '' ) {
                     this.$message({
                         type: 'warning',
                         message: '内容不能为空'
@@ -110,12 +110,14 @@
                     reply_id: this.item.id
                 })
                 .then( () => {
+                    let str = this.value.split(' ')
+                    let username = str[0].split('@')[1]
                     this.addReplies({
                             author:{
                                 avatar_url: this.user.avatar_url,
                                 loginname: this.user.loginname
                             },
-                            content: this.value,
+                            content: `<a href="/user/${username}">@${username}</a>&nbsp;${str[1]}`,
                             create_at: new Date(),
                             is_uped: false,
                             ups: []
@@ -123,7 +125,7 @@
                     this.commentSwitch = false
                     this.value = '@' + this.item.author.loginname + ' '
                 })
-                .catch( () => this.$message.error('网络超时') )
+                .catch( () => this.message.error('网络超时') )
             },
             showComment() {
                 if( !this.accesstoken ) {
@@ -163,9 +165,16 @@
         margin: 10px 0;
     }
 
+    .replies-main {
+        margin-left: 45px;
+        font-size: 14px;
+
+    }
+
     .replies-bar {
+
         display: flex;
-        margin-bottom: 10px;
+        margin: 10px 0 0 45px;
 
         .uped {
             color: #3a8ee6;
@@ -216,6 +225,7 @@
         background-color: #f8f9fa;
         border: 1px solid #f1f1f1;
         border-radius: 4px;
+        margin: 10px 0 0 45px;
         
         textarea {
             display: block;

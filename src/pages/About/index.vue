@@ -30,7 +30,7 @@
         margin-top: 70px;
 
         a {
-            color: #409eff;
+            color: #41b883;
         }
     }
 

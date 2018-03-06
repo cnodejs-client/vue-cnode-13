@@ -135,7 +135,6 @@
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 8px;
-        color: #007fff;
     }
 
     @media (min-width: 768px) {

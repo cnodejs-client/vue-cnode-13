@@ -103,15 +103,17 @@
                 })
                 .then( () => {
                     this.init_collect = this.is_collect
-                    console.log('收藏成功')
                 } ) // 请求完成替换初始值
-                .catch( () => this.$message.error('请求超时')  )
+                .catch( () => this.$message({
+                        type: 'warning',
+                        message: '你还未登陆'
+                    }) )
             },
             reply() {
                 if( !this.accesstoken ) {
                     this.$message({
                         type: 'warning',
-                        message: '你还未登陆！'
+                        message: '你还未登陆'
                     })
                     return false
                 }
@@ -141,7 +143,7 @@
                     })
                     this.value = ''
                 } )
-                .catch( () => this.$message.error('提交失败') )
+                .catch( () => this.$error('评论失败') )
 
             }
         },
